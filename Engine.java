@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 public class Engine {
 
     private FuelType fuelType;
@@ -37,6 +36,7 @@ public class Engine {
             throw new RuntimeException("Error! Out of fuel!");
         }
     }
+    
     public static void main(String[] args) {
         Engine myEngine = new Engine(FuelType.ELECTRIC, 100.0);
         try {
