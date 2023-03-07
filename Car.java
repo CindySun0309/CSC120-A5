@@ -29,7 +29,7 @@ public class Car {
             System.out.println(p.getName() + " is already onboard!");
         }
         else {
-            throw new RuntimeException("Error! The car is at max capacity!");
+            throw new RuntimeException("Error! Cannot add " + p.getName() +  "! The car is at max capacity.");
         }
     }
 
@@ -40,13 +40,13 @@ public class Car {
             System.out.println("Successfully removed passenger " + p.getName() + "!");
         }
         else {
-            throw new RuntimeException("Error! Does not have this passenger abroad!");
+            throw new RuntimeException("Error! Does not have " + p.getName() + " onbroad!");
         }
     }
 
     public void printManifest() {
         if (seatsRemaining() == this.maxCapacity) {
-            System.out.println("This car is EMPTY.");
+            System.out.println("The car is EMPTY.");
         }
         if (seatsRemaining() < this.maxCapacity) {
             System.out.println("Current passengers abroad:" + this.passengerNumber);
@@ -60,12 +60,23 @@ public class Car {
         Car newCar = new Car(2);
         Passenger me = new Passenger("Cindy");
         Passenger amy = new Passenger("Amy");
+        Passenger jack = new Passenger("Jack");
+        Passenger diego = new Passenger("Diego");
         
         amy.boardCar(newCar);
         System.out.println(newCar.seatsRemaining());
         me.boardCar(newCar);
         me.boardCar(newCar);
+        me.getOffCar(newCar);
+        diego.boardCar(newCar);
+        jack.getOffCar(newCar);
+        me.boardCar(newCar);
+
 
         newCar.printManifest();
+
+
+        newCar.addPassenger(amy);
+        amy.boardCar(newCar);
 }
 }

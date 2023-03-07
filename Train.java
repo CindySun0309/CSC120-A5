@@ -14,5 +14,45 @@ public class Train {
         }
     }
 
+    public Engine getEngine() {
+        return this.engine;
+    }
 
+    public Car getCar(int i) {
+        return this.cars.get(i);
+    }
+
+    public int getMaxCapacity() {
+        int maxCapacity = 0;
+        for (int i = 0; i < cars.size(); i++ ) {
+            maxCapacity += cars.get(i).getCapacity();
+        }
+        return maxCapacity;
+    }
+
+    public int seatsRemaining() {
+        int remainedSeats = 0;
+        for (int i = 0; i < cars.size(); i++ ) {
+            remainedSeats += cars.get(i).seatsRemaining();
+        }
+        return remainedSeats;
+    }
+
+
+    public void printManifest() {
+        for (int i = 0; i < cars.size(); i++ ) {
+            cars.get(i).printManifest();
+        }
+    }
+        
+
+    public static void main(String[] args) {
+        
+
+        Train newTrain = new Train(FuelType.STEAM, 10, 2, 2);
+        newTrain.getMaxCapacity();
+        newTrain.seatsRemaining();
+        newTrain.printManifest();
+
+    }
 }
