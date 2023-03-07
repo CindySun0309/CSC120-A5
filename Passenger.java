@@ -6,6 +6,10 @@ public class Passenger {
         this.name = name;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
     public void boardCar(Car c) {
         try {
             c.addPassenger(this);
@@ -21,4 +25,20 @@ public class Passenger {
             System.out.println(e);
         }
     }
+
+    public static void main(String[] args) {
+        Car newCar = new Car(2);
+        Passenger me = new Passenger("Cindy");
+        Passenger amy = new Passenger("Amy");
+        
+        amy.boardCar(newCar);
+        System.out.println(newCar.seatsRemaining());
+        me.boardCar(newCar);
+        me.boardCar(newCar);
+        me.getOffCar(newCar);
+
+        newCar.printManifest();
+
+    }
 }
+
