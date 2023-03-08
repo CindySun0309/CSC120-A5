@@ -1,24 +1,49 @@
 import java.util.ArrayList;
 
+/**
+ * this class creates cars for the train
+ */
 public class Car {
-    private ArrayList<Passenger> passengers;
-    int maxCapacity;
-    int passengerNumber;
 
+    /**
+     * passengers: a list for passengers
+     * maxCapacity: the maximum capacity for passengers
+     * passengerNumber: the number of passengers onboard
+     */
+    private ArrayList<Passenger> passengers;
+    public int maxCapacity;
+    public int passengerNumber;
+
+    /**
+     * construct a car
+     * @param maxCapacity
+     */
     public Car(int maxCapacity) {
         this.maxCapacity = maxCapacity;
         this.passengers = new ArrayList<Passenger>(maxCapacity);
         this.passengerNumber = 0;
     }
 
+    /**
+     * gets the maximum capacity for passengers
+     * @return the maximum capacity for passengers
+     */
     public int getCapacity(){
         return this.maxCapacity;
     }
 
+    /**
+     * gets the remaining seats on the car
+     * @return the remaining seats on the car
+     */
     public int seatsRemaining(){
         return this.maxCapacity - this.passengerNumber;
     }
 
+    /**
+     * add a passenger on the car
+     * @param p a passenger
+     */
     public void addPassenger(Passenger p) {
         if ((seatsRemaining() > 0) && !(passengers.contains(p))) {
             passengers.add(p);
@@ -33,6 +58,10 @@ public class Car {
         }
     }
 
+    /**
+     * remove a passenger from the car
+     * @param p a passenger
+     */
     public void removePassenger(Passenger p) {
         if (passengers.contains(p)) {
             passengers.remove(p);
@@ -44,18 +73,28 @@ public class Car {
         }
     }
 
+    /**
+     * print the manifest of the car, including
+     * the number of passengers currently onboard
+     * and the names of passengers
+     */
     public void printManifest() {
         if (seatsRemaining() == this.maxCapacity) {
-            System.out.println("The car is EMPTY.");
+            System.out.println("This car is EMPTY.");
         }
         if (seatsRemaining() < this.maxCapacity) {
-            System.out.println("Current passengers abroad:" + this.passengerNumber);
+            System.out.println("Current passengers onbroad:" + this.passengerNumber);
             System.out.println("Names of passengers:");
             for (int i = 0; i < passengers.size(); i++) {
                 System.out.println(this.passengers.get(i).getName());
             }
         }
-    }       
+    }     
+    
+    /**
+     * the main() is to test functions in the class
+     * @param args
+     */
     public static void main(String[] args) {
         Car newCar = new Car(2);
         Passenger me = new Passenger("Cindy");
